@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SINH HOẠT HÈ 2026 – CHI ĐOÀN KHU PHỐ 76</title>
+<meta name="description" content="Sinh hoạt hè 2026 – Chi đoàn Khu phố 76. Một mùa hè vui tươi, năng động, bổ ích cho thiếu nhi."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pastel-blue:#A8DCFF;
+    --pastel-yellow:#FFE89A;
+    --pastel-orange:#FFC79A;
+    --pastel-pink:#FFB8D1;
+    --pastel-mint:#B8F2D8;
+    --ink:#3B2C5A;
+  }
+  *{font-family:'Fredoka',system-ui,sans-serif;}
+  h1,h2,h3,.display{font-family:'Baloo 2',cursive;}
+  html{scroll-behavior:smooth;}
+  /* 👉 Đổi URL bên dưới thành ảnh của bạn (có thể là link online hoặc file cùng thư mục, ví dụ: url('background.jpg')) */
+  body{
+    background: #FFFDF8;
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  /* Loader */
+  #loader{position:fixed;inset:0;background:linear-gradient(135deg,#FFE89A,#FFB8D1,#A8DCFF);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s ease;}
+  #loader .sun{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#FFF6B0,#FFB347);box-shadow:0 0 60px #FFD56B;animation:spin 2s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Floating */
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(4deg)}}
+  @keyframes floatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes drift{0%{transform:translateX(-30px)}100%{transform:translateX(calc(100vw + 30px))}}
+  @keyframes pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+  @keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+  .float{animation:float 5s ease-in-out infinite;}
+  .float-slow{animation:floatSlow 7s ease-in-out infinite;}
+  .wiggle{animation:wiggle 3s ease-in-out infinite;transform-origin:center;}
+
+  /* Cloud drift */
+  .cloud{position:absolute;opacity:.85;animation:drift 40s linear infinite;}
+
+  /* Fade in */
+  .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* Buttons */
+  .btn-cute{background:linear-gradient(135deg,#FF8FB3,#FFB347);color:white;padding:16px 36px;border-radius:999px;font-weight:700;font-size:18px;box-shadow:0 10px 0 #E06A99,0 14px 30px rgba(255,143,179,.45);transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:10px;}
+  .btn-cute:hover{transform:translateY(-3px);box-shadow:0 13px 0 #E06A99,0 20px 40px rgba(255,143,179,.55);}
+  .btn-cute:active{transform:translateY(4px);box-shadow:0 4px 0 #E06A99;}
+
+  /* Cards */
+  .card{background:white;border-radius:28px;box-shadow:0 8px 24px rgba(120,100,170,.12);transition:transform .35s,box-shadow .35s;overflow:hidden;}
+  .card:hover{transform:translateY(-8px) rotate(-.5deg);box-shadow:0 18px 40px rgba(120,100,170,.22);}
+
+  .chip{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:600;font-size:13px;}
+
+  /* Timeline */
+  .tl-dot{width:22px;height:22px;border-radius:50%;border:5px solid white;box-shadow:0 0 0 4px #FFB8D1;}
+
+  /* Hero bg */
+  .hero-bg{background:linear-gradient(135deg,#FFE89A 0%,#A8DCFF 60%,#FFB8D1 100%);}
+  .hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,rgba(255,253,248,.85) 100%);}
+
+  /* Hero photo card */
+  .hero-photo-card{
+    position:relative;
+    border-radius:32px;
+    overflow:hidden;
+    box-shadow:0 24px 60px rgba(120,100,170,.25), 0 0 0 6px rgba(255,255,255,.7);
+    aspect-ratio:3/4;
+    width:100%;
+    max-width:1000px;
+    background:linear-gradient(160deg,#FFE89A,#FFB8D1);
+  }
+  .hero-photo-card img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .hero-photo-card .photo-placeholder{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:12px;color:rgba(59,44,90,.45);
+    font-weight:600;font-size:15px;text-align:center;padding:24px;
+  }
+  .hero-photo-card .photo-placeholder .icon{font-size:52px;opacity:.5;}
+  /* Floating badge on photo */
+  .hero-photo-badge{
+    position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-radius:999px;padding:8px 20px;
+    font-weight:700;color:var(--ink);font-size:14px;
+    white-space:nowrap;
+    box-shadow:0 4px 16px rgba(0,0,0,.1);
+  }
+  /* Decorative dots */
+  .hero-dots{
+    position:absolute;width:120px;height:120px;
+    background-image:radial-gradient(circle,#FFB8D1 2px,transparent 2px);
+    background-size:16px 16px;opacity:.6;
+  }
+
+  /* Section heading underline */
+  .heading-deco::after{content:"";display:block;margin:14px auto 0;width:90px;height:8px;border-radius:999px;background:linear-gradient(90deg,#FFB8D1,#FFE89A,#A8DCFF);}
+
+  /* Nav */
+  .nav-link{padding:8px 14px;border-radius:999px;font-weight:600;transition:background .2s;}
+  .nav-link:hover{background:#FFE89A;}
+
+  /* Balloon */
+  .balloon{width:60px;height:78px;border-radius:50%;position:relative;}
+  .balloon::after{content:"";position:absolute;bottom:-30px;left:50%;width:2px;height:30px;background:#bbb;transform:translateX(-50%);}
+
+  @media (max-width:640px){
+    .btn-cute{padding:14px 28px;font-size:16px;}
+  }
+
+  /* ── Hamburger Menu ── */
+  #mobile-menu{
+    display:none;
+    position:fixed;inset:0;z-index:49;
+    background:rgba(255,253,248,.97);
+    backdrop-filter:blur(12px);
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:8px;
+    opacity:0;transform:translateY(-12px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  #mobile-menu.open{
+    display:flex;opacity:1;transform:translateY(0);
+  }
+  #mobile-menu a{
+    font-family:'Baloo 2',cursive;
+    font-size:22px;font-weight:700;
+    color:var(--ink);
+    padding:12px 32px;border-radius:999px;
+    transition:background .2s;
+    width:80%;text-align:center;
+  }
+  #mobile-menu a:hover,#mobile-menu a:active{background:#FFE89A;}
+  #hamburger{
+    display:none;
+    flex-direction:column;justify-content:center;align-items:center;
+    gap:5px;width:40px;height:40px;cursor:pointer;
+    border-radius:12px;background:rgba(255,142,179,.15);
+    border:none;padding:8px;transition:background .2s;
+  }
+  #hamburger:hover{background:rgba(255,142,179,.3);}
+  #hamburger span{
+    display:block;width:22px;height:2.5px;
+    background:var(--ink);border-radius:99px;
+    transition:transform .3s ease, opacity .3s ease;
+    transform-origin:center;
+  }
+  #hamburger.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  #hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0);}
+  #hamburger.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+  @media (max-width:768px){
+    #hamburger{display:flex;}
+  }
+
+  /* Fix lightbox caption overflow on mobile */
+  #lightbox-caption{
+    white-space:normal;
+    max-width:85vw;
+    text-align:center;
+    word-break:break-word;
+  }
+
+  /* Team card: 2 cột trên màn hình rất nhỏ */
+  @media (max-width:480px){
+    #teamGrid{ grid-template-columns:repeat(2,1fr) !important; }
+    #teamGrid .card .display{ font-size:0.9rem; }
+  }
+
+  /* Lightbox */
+  #lightbox{
+    position:fixed;inset:0;z-index:9998;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(20,10,40,.85);
+    backdrop-filter:blur(8px);
+    opacity:0;pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  #lightbox.open{opacity:1;pointer-events:all;}
+  #lightbox-img{
+    max-width:90vw;max-height:85vh;
+    border-radius:20px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    transform:scale(.85);
+    transition:transform .35s cubic-bezier(.2,.9,.3,1);
+    object-fit:contain;
+  }
+  #lightbox.open #lightbox-img{transform:scale(1);}
+  #lightbox-caption{
+    position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+    background:white/90;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(6px);
+    border-radius:20px;padding:8px 22px;
+    font-weight:600;color:#3B2C5A;font-size:15px;
+    white-space:normal;
+    max-width:85vw;
+    text-align:center;
+    word-break:break-word;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+  }
+  #lightbox-close{
+    position:absolute;top:20px;right:24px;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);
+    color:white;font-size:22px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:background .2s,transform .2s;
+  }
+  #lightbox-close:hover{background:rgba(255,255,255,.35);transform:rotate(90deg);}
+  #lightbox-prev,#lightbox-next{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);
+    color:white;font-size:22px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:background .2s,transform .2s;
+    user-select:none;
+  }
+  #lightbox-prev{left:20px;}#lightbox-next{right:20px;}
+  #lightbox-prev:hover{background:rgba(255,255,255,.35);transform:translateY(-50%) scale(1.1);}
+  #lightbox-next:hover{background:rgba(255,255,255,.35);transform:translateY(-50%) scale(1.1);}
+  .lb-trigger{cursor:zoom-in;}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader"><div class="sun"></div></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-white/70 border-b border-white">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-2">
+      <span class="text-2xl">🌈</span>
+      <span class="display font-extrabold text-lg text-pink-500">Hè 2026 · KP76</span>
+    </a>
+    <div class="hidden md:flex items-center gap-1 text-sm">
+      <a href="#about" class="nav-link">Giới thiệu</a>
+      <a href="#team" class="nav-link">Đội ngũ</a>
+      <a href="#activities" class="nav-link">Hoạt động</a>
+      <a href="#timeline" class="nav-link">Lịch trình</a>
+      <a href="#location" class="nav-link">Địa điểm</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#about" class="btn-cute !py-2 !px-5 !text-sm hidden md:inline-flex">Tham gia 🎈</a>
+      <button id="hamburger" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu điều hướng">
+  <a href="#about"      class="mobile-nav-link">Giới thiệu</a>
+  <a href="#team"       class="mobile-nav-link">Đội ngũ</a>
+  <a href="#activities" class="mobile-nav-link">Hoạt động</a>
+  <a href="#timeline"   class="mobile-nav-link">Lịch trình</a>
+  <a href="#location"   class="mobile-nav-link">Địa điểm</a>
+  <a href="#about" class="btn-cute mt-4">Tham gia 🎈</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="relative min-h-screen hero-bg overflow-hidden flex items-center pt-20">
+  <!-- Clouds -->
+  <div class="cloud" style="top:8%;font-size:50px;animation-duration:55s">☁️</div>
+  <div class="cloud" style="top:25%;font-size:36px;animation-duration:70s;animation-delay:-20s">☁️</div>
+  <div class="cloud" style="top:65%;font-size:64px;animation-duration:90s;animation-delay:-40s;opacity:.5">☁️</div>
+  <!-- Floating emojis (left side only, away from photo) -->
+  <div class="absolute left-4 top-36 text-4xl float hidden md:block">🎈</div>
+  <div class="absolute left-10 bottom-20 text-4xl float-slow hidden md:block" style="animation-delay:-1s">⭐</div>
+  <div class="absolute left-6 bottom-44 text-4xl wiggle hidden md:block">🌻</div>
+  <!-- Decorative dots behind photo -->
+  <div class="hero-dots absolute right-8 top-24 hidden lg:block" style="transform:rotate(15deg)"></div>
+  <div class="hero-dots absolute right-32 bottom-16 hidden lg:block" style="width:80px;height:80px;opacity:.4"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 z-10 w-full py-12">
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <!-- LEFT: Text content -->
+      <div class="text-left">
+        <span class="chip bg-white/80 text-pink-500 shadow">🌞 Mùa hè rực rỡ 2026</span>
+        <h1 class="display mt-5 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-purple-900 drop-shadow-sm">
+          SINH HOẠT HÈ<br/>
+          <span class="text-pink-500">2026</span>
+        </h1>
+        <p class="mt-2 text-xl md:text-2xl font-bold text-sky-600 display">CHI ĐOÀN KHU PHỐ 76</p>
+        <p class="mt-5 text-base md:text-lg text-purple-900/75 leading-relaxed max-w-md">
+          Cùng các bạn nhỏ khám phá một mùa hè đầy ắp tiếng cười với những trò chơi dân gian, hoạt động kỹ năng, sáng tạo và gắn kết yêu thương 💛
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-start gap-3">
+          <a href="#activities" class="btn-cute">Khám Phá Ngay ✨</a>
+          <a href="#about" class="px-7 py-4 rounded-full bg-white/80 backdrop-blur font-semibold text-purple-900 shadow hover:bg-white transition">Tìm hiểu thêm →</a>
+        </div>
+        <div class="mt-8 flex gap-5 text-3xl">
+          <span class="float">🎨</span>
+          <span class="float-slow">🎵</span>
+          <span class="float">⚽</span>
+          <span class="float-slow">📚</span>
+          <span class="float">🎪</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Photo card -->
+      <div class="flex justify-center md:justify-end">
+        <div class="relative float-slow">
+          <!-- Small floating badge top-left -->
+          <div class="absolute -top-4 -left-4 z-10 bg-white rounded-2xl shadow-lg px-4 py-2 flex items-center gap-2 font-bold text-purple-900 text-sm float" style="animation-delay:-.5s">
+            🎉 Hè 2026
+          </div>
+          <!-- Small floating badge bottom-right -->
+          <div class="absolute -bottom-4 -right-4 z-10 bg-pink-400 rounded-2xl shadow-lg px-4 py-2 flex items-center gap-2 font-bold text-white text-sm float" style="animation-delay:-1.5s">
+            ❤️ KP76
+          </div>
+
+          <div class="hero-photo-card">
+            <!--
+              👉 HƯỚNG DẪN CHÈN ẢNH:
+              Thay dòng placeholder bên dưới bằng:
+              <img src="ten-anh-cua-ban.jpg" alt="Tên của bạn" />
+              hoặc dùng link online:
+              <img src="https://link-anh.com/anh.jpg" alt="Tên" />
+            -->
+            <img src="background.jpg" alt="Tên của bạn" />
+              <div class="icon">📸</div>
+              <div>Chèn ảnh của bạn vào đây</div>
+              <div style="font-size:12px;opacity:.7">Thay thẻ này bằng &lt;img src="anh.jpg"&gt;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="relative py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center reveal">
+      <span class="chip bg-pink-100 text-pink-600">Về chương trình</span>
+      <h2 class="display text-4xl md:text-5xl font-extrabold mt-3 heading-deco">Mùa hè của niềm vui & khám phá</h2>
+      <p class="mt-5 max-w-2xl mx-auto text-lg text-purple-900/70">Chương trình sinh hoạt hè 2026 mang đến không gian vui chơi an toàn, lành mạnh và bổ ích cho thiếu nhi khu phố 76.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+      <!-- 4 feature cards -->
+      <div class="card p-7 reveal" style="background:linear-gradient(160deg,#FFE89A,#FFF7D6)">
+        <div class="text-5xl">🌳</div>
+        <h3 class="display text-xl font-bold mt-4">Môi trường lành mạnh</h3>
+        <p class="mt-2 text-purple-900/70 text-sm">Không gian vui chơi an toàn, gần gũi thiên nhiên và đầy tích cực cho các em.</p>
+      </div>
+      <div class="card p-7 reveal" style="background:linear-gradient(160deg,#A8DCFF,#E2F2FF)">
+        <div class="text-5xl">🎨</div>
+        <h3 class="display text-xl font-bold mt-4">Học mà chơi</h3>
+        <p class="mt-2 text-purple-900/70 text-sm">Hoạt động sáng tạo, vẽ tranh, đố vui giúp các em vừa học vừa giải trí.</p>
+      </div>
+      <div class="card p-7 reveal" style="background:linear-gradient(160deg,#FFB8D1,#FFE0EC)">
+        <div class="text-5xl">🤝</div>
+        <h3 class="display text-xl font-bold mt-4">Gắn kết đội nhóm</h3>
+        <p class="mt-2 text-purple-900/70 text-sm">Trò chơi tập thể giúp các em biết chia sẻ, hợp tác và xây dựng tình bạn đẹp.</p>
+      </div>
+      <div class="card p-7 reveal" style="background:linear-gradient(160deg,#FFC79A,#FFE7D1)">
+        <div class="text-5xl">💡</div>
+        <h3 class="display text-xl font-bold mt-4">Kỹ năng sống</h3>
+        <p class="mt-2 text-purple-900/70 text-sm">Trang bị kỹ năng cần thiết: tự lập, an toàn, giao tiếp và bảo vệ bản thân.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="py-24 px-6 bg-gradient-to-b from-white to-sky-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center reveal">
+      <span class="chip bg-sky-100 text-sky-600">Đội ngũ tổ chức</span>
+      <h2 class="display text-4xl md:text-5xl font-extrabold mt-3 heading-deco">Những người bạn lớn của các em</h2>
+    </div>
+    <div id="teamGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-14"></div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center reveal">
+      <span class="chip bg-yellow-100 text-yellow-700">Lịch sinh hoạt tuần</span>
+      <h2 class="display text-4xl md:text-5xl font-extrabold mt-3 heading-deco">Hoạt động hàng tuần</h2>
+      <p class="mt-4 text-purple-900/70">5 chủ đề rực rỡ – mỗi tuần một niềm vui mới 🎉</p>
+    </div>
+    <div id="activityGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-14"></div>
+  </div>
+</section>
+<!-- TIMELINE -->
+<section id="timeline" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center reveal">
+      <span class="chip bg-orange-100 text-orange-600">Hành trình mùa hè</span>
+      <h2 class="display text-4xl md:text-5xl font-extrabold mt-3 heading-deco">Lịch trình hè 2026</h2>
+    </div>
+    <div class="relative mt-16">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-pink-300 via-yellow-300 to-sky-300 rounded-full md:-translate-x-1/2"></div>
+      <!-- June -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-14 reveal">
+        <div class="md:text-right md:pr-10">
+          <div class="card p-6 inline-block" style="background:linear-gradient(160deg,#FFE89A,#FFF7D6)">
+            <span class="chip bg-yellow-300 text-yellow-900">Tháng 6</span>
+            <h3 class="display text-2xl font-bold mt-2">🎉 Khai mạc hè</h3>
+            <p class="mt-2 text-purple-900/70">Lễ khai mạc rộn ràng với văn nghệ, trò chơi và lời chào mùa hè rực rỡ.</p>
+          </div>
+        </div>
+        <div class="absolute left-4 md:left-1/2 top-6 tl-dot md:-translate-x-1/2" style="box-shadow:0 0 0 4px #FFE89A"></div>
+      </div>
+      <!-- July -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-14 reveal">
+        <div></div>
+        <div class="md:pl-10">
+          <div class="card p-6 inline-block" style="background:linear-gradient(160deg,#A8DCFF,#E2F2FF)">
+            <span class="chip bg-sky-300 text-sky-900">Tháng 7</span>
+            <h3 class="display text-2xl font-bold mt-2">💪 Hoạt động kỹ năng</h3>
+            <p class="mt-2 text-purple-900/70">Học kỹ năng sống, sinh tồn, sơ cấp cứu, cùng những trò chơi đồng đội thú vị.</p>
+          </div>
+        </div>
+        <div class="absolute left-4 md:left-1/2 top-6 tl-dot md:-translate-x-1/2" style="box-shadow:0 0 0 4px #A8DCFF"></div>
+      </div>
+      <!-- August -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 reveal">
+        <div class="md:text-right md:pr-10">
+          <div class="card p-6 inline-block" style="background:linear-gradient(160deg,#FFB8D1,#FFE0EC)">
+            <span class="chip bg-pink-300 text-pink-900">Tháng 8</span>
+            <h3 class="display text-2xl font-bold mt-2">🎊 Bế mạc hè</h3>
+            <p class="mt-2 text-purple-900/70">Tổng kết, trao thưởng và đêm hội chia tay mùa hè đáng nhớ.</p>
+          </div>
+        </div>
+        <div class="absolute left-4 md:left-1/2 top-6 tl-dot md:-translate-x-1/2" style="box-shadow:0 0 0 4px #FFB8D1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="py-24 px-6 bg-gradient-to-b from-sky-50 to-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center reveal">
+      <span class="chip bg-sky-100 text-sky-600">Địa điểm tổ chức</span>
+      <h2 class="display text-4xl md:text-5xl font-extrabold mt-3 heading-deco">Hẹn gặp các em tại đây</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 mt-14 items-stretch">
+      <div class="card p-8 reveal" style="background:linear-gradient(160deg,#FFE89A,#FFF7D6)">
+        <div class="text-5xl">📍</div>
+        <h3 class="display text-2xl font-bold mt-4">Chi đoàn Khu phố 76</h3>
+        <div class="mt-5 space-y-4 text-purple-900/80">
+          <div><div class="font-bold">Địa chỉ</div><div>530 Tỉnh Lộ 10</div></div>
+          <div><div class="font-bold">Khu vực</div><div>QJ59+249 Bình Trị Đông, Hồ Chí Minh</div></div>
+          <div><div class="font-bold">Toạ độ</div><div>10.7575375, 106.6178536</div></div>
+        </div>
+        <a href="https://www.google.com/maps?q=10.7575375,106.6178536" target="_blank" rel="noopener" class="btn-cute mt-7">Mở Google Maps 🗺️</a>
+      </div>
+      <div class="card overflow-hidden reveal" style="min-height:420px">
+        <iframe
+          src="https://www.google.com/maps?q=10.7575375,106.6178536&hl=vi&z=16&output=embed"
+          width="100%" height="100%" style="border:0;min-height:420px;" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative pt-20 pb-10 px-6 overflow-hidden" style="background:linear-gradient(135deg,#FFB8D1,#FFE89A,#A8DCFF)">
+  <div class="absolute top-6 left-10 text-4xl float">🎈</div>
+  <div class="absolute top-10 right-16 text-4xl float-slow">⭐</div>
+  <div class="absolute bottom-10 left-1/3 text-3xl float">🌻</div>
+  <div class="max-w-5xl mx-auto text-center relative">
+    <div class="text-6xl mb-4">🌈</div>
+    <h3 class="display text-3xl md:text-4xl font-extrabold text-purple-900">Một mùa hè vui tươi – năng động – bổ ích</h3>
+    <p class="mt-3 text-purple-900/80">Chi Đoàn Khu Phố 76 · Sinh hoạt hè 2026</p>
+    <div class="mt-6 flex justify-center gap-4 text-2xl">
+      <a href="https://www.facebook.com/profile.php?id=61580052440560" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition shadow">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2">
+          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+        </a>
+      <a href="https://www.tiktok.com/@chidoankp76?_r=1&amp;_t=ZS-96ZSeruWcyI" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition shadow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/>
+        </svg>
+        </a>
+    </div>
+    <div class="mt-10 text-sm text-purple-900/70">© 2026 Chi Đoàn KP76 · Made with 💛 for kids</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div id="lightbox-close" title="Đóng (Esc)">✕</div>
+  <button id="lightbox-prev" title="Ảnh trước">‹</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <button id="lightbox-next" title="Ảnh tiếp theo">›</button>
+  <div id="lightbox-caption"></div>
+</div>
+
+<script>
+  // ── HAMBURGER MENU ────────────────────────────────────────
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobile-menu');
+
+  function toggleMenu(force){
+    const isOpen = force !== undefined ? force : !mobileMenu.classList.contains('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    if(isOpen){
+      mobileMenu.style.display = 'flex';
+      // Trigger reflow để animation chạy
+      mobileMenu.offsetHeight;
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(()=>{ if(!mobileMenu.classList.contains('open')) mobileMenu.style.display='none'; }, 300);
+    }
+  }
+
+  hamburger.addEventListener('click', ()=> toggleMenu());
+
+  // Đóng menu khi click vào link
+  document.querySelectorAll('.mobile-nav-link, #mobile-menu .btn-cute').forEach(link=>{
+    link.addEventListener('click', ()=> toggleMenu(false));
+  });
+
+  // Đóng menu khi bấm Esc
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape' && mobileMenu.classList.contains('open')) toggleMenu(false);
+  });
+
+  // Loader hide
+  window.addEventListener('load',()=>{
+    const l=document.getElementById('loader');
+    setTimeout(()=>{l.style.opacity=0;setTimeout(()=>l.remove(),600);},500);
+  });
+
+  // Team data
+  const colors=['#FFE89A','#A8DCFF','#FFB8D1','#FFC79A','#B8F2D8'];
+  const team=[
+    {n:'Võ Huỳnh Ngọc Hân',r:'Chị Cà Rốt',d:'Dễ Thương, xinh đẹp. Người dẫn dắt nhiệt huyết, luôn truyền cảm hứng cho các em.', img: 'vo.jpg'},
+    {n:'Trần Ngọc Minh Huy',r:'Anh Khoai Tây',d:'Đẹp trai, hài hước. Sáng tạo, vui vẻ và rất giỏi tổ chức trò chơi tập thể.'},
+    {n:'Mạch Vĩ Cường',r:'Anh hot boy',d:'Yêu âm nhạc, mang lời ca tiếng hát đến mọi buổi sinh hoạt.', img: 'anhhotboy.jpg'},
+    {n:'Trương Trọng Tiến',r:'Anh Tiến',d:'Khoẻ khoắn, năng động – đội trưởng các trận đấu sôi nổi.'},
+    {n:'Từ Chấn Hưng',r:'Anh Trâu',d:'Khéo tay, dạy các em vẽ tranh và làm thủ công sáng tạo.'},
+    {n:'Thái Hoàng Đạt',r:'Anh Bánh Bao',d:'Truyền đạt kỹ năng sống, sơ cấp cứu và an toàn cho trẻ.'},
+    {n:'Lại Hữu Gia Bảo',r:'Anh Ong',d:'Lưu giữ khoảnh khắc đẹp qua từng bức ảnh và video.'},
+    {n:'Tiến',r:'Hậu cần',d:'Chu đáo, tỉ mỉ – đảm bảo mọi hoạt động diễn ra suôn sẻ.'},
+    {n:'Hoàng Vũ',r:'Phụ trách Trò chơi',d:'Vui tính, biết hàng trăm trò chơi dân gian hấp dẫn.'},
+    {n:'Hữu Tâm',r:'An ninh – An toàn',d:'Luôn quan tâm và bảo vệ các em trong mọi hoạt động.'},
+  ];
+  const teamGrid=document.getElementById('teamGrid');
+  team.forEach((m,i)=>{
+    const seed=encodeURIComponent(m.n);
+    const bg=colors[i%colors.length];
+    teamGrid.innerHTML+=`
+    <div class="card reveal text-center pb-6">
+      <div class="h-44 flex items-center justify-center" style="background:${bg}">
+        <img src="${m.img || `https://api.dicebear.com/7.x/adventurer/svg?seed=${seed}&backgroundColor=transparent`}" alt="${m.n}" class="w-32 h-32 rounded-full bg-white shadow-lg border-4 border-white object-cover lb-trigger" data-lb-src="${m.img || `https://api.dicebear.com/7.x/adventurer/svg?seed=${seed}&backgroundColor=transparent`}" data-lb-caption="${m.n} · ${m.r}" data-lb-group="team"/>
+      </div>
+      <h3 class="display text-lg font-bold mt-4">${m.n}</h3>
+      <div class="chip bg-pink-100 text-pink-600 mt-1">${m.r}</div>
+      <p class="text-sm text-purple-900/70 mt-3 px-5">${m.d}</p>
+    </div>`;
+  });
+
+  // Activities
+  const activities=[
+    {t:'Nhận thưởng',d:'Các em nhỏ vui sướng, phấn khích khi được nhận quà từ các trò chơi.',date:'Thứ Bảy, 06/06/2026',img:'ảnh 1.jpg',c:'#FFE89A',ic:'🪁'},
+    {t:'Trò chơi dân gian',d:'Các em được chơi các trò chơi tuổi thơ, mang đậm bản sắc dân tộc .',date:'Chủ nhật, 14/06/2026',img:'ảnh 2.jpg',c:'#A8DCFF',ic:'🎨'},
+    {t:'Đố vui có thưởng',d:'Thử thách trí tuệ với những câu đố hấp dẫn và phần quà thú vị.',date:'Thứ Bảy, 04/07/2026',img:'ảnh 3.jpg',c:'#FFB8D1',ic:'🧠'},
+    {t:'Hát múa tập thể',d:'Cùng nhau ca hát những bài hát thiếu nhi vui tươi, sôi động.',date:'Chủ nhật, 19/07/2026',img:'ảnh 4.jpg',c:'#FFC79A',ic:'🎤'},
+    {t:'Hoạt động ngoài trời',d:'Đồng đội cùng nhau vượt qua thử thách, gắn kết và rèn luyện sức khoẻ.',date:'Thứ Bảy, 08/08/2026',img:'ảnh 5.jpg',c:'#B8F2D8',ic:'⛺'},
+  ];
+  const aGrid=document.getElementById('activityGrid');
+  activities.forEach(a=>{
+    aGrid.innerHTML+=`
+    <div class="card reveal overflow-hidden">
+      <div class="relative h-56 overflow-hidden">
+        <img src="${a.img}" alt="${a.t}" class="w-full h-full object-cover transition duration-700 hover:scale-110" loading="lazy"/>
+        <div class="absolute top-3 left-3 chip" style="background:${a.c};color:#3B2C5A">${a.ic} ${a.date}</div>
+      </div>
+      <div class="p-6">
+        <h3 class="display text-2xl font-bold">${a.t}</h3>
+        <p class="mt-2 text-purple-900/70">${a.d}</p>
+      </div>
+    </div>`;
+  });
+
+  // Reveal on scroll
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ── LIGHTBOX ──────────────────────────────────────────────
+  const lb       = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lightbox-img');
+  const lbCap    = document.getElementById('lightbox-caption');
+  const lbClose  = document.getElementById('lightbox-close');
+  const lbPrev   = document.getElementById('lightbox-prev');
+  const lbNext   = document.getElementById('lightbox-next');
+
+  let lbItems = [];   // [{src, caption}]
+  let lbIndex = 0;
+
+  function openLightbox(src, caption, group, clickedEl){
+    // Build item list from group
+    lbItems = Array.from(document.querySelectorAll(`[data-lb-group="${group}"]`))
+      .map(el=>({src:el.dataset.lbSrc, caption:el.dataset.lbCaption}));
+    lbIndex = lbItems.findIndex(it=>it.src===src);
+    if(lbIndex<0) lbIndex=0;
+    showItem(lbIndex);
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  function showItem(idx){
+    const item = lbItems[idx];
+    lbImg.src = item.src;
+    lbCap.textContent = item.caption;
+    // Hide arrows if only 1 item
+    lbPrev.style.display = lbItems.length>1?'flex':'none';
+    lbNext.style.display = lbItems.length>1?'flex':'none';
+  }
+
+  function closeLightbox(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+    setTimeout(()=>{ lbImg.src=''; },300);
+  }
+
+  // Delegate click on lb-trigger images
+  document.addEventListener('click', e=>{
+    const trigger = e.target.closest('.lb-trigger');
+    if(trigger){
+      openLightbox(trigger.dataset.lbSrc, trigger.dataset.lbCaption, trigger.dataset.lbGroup, trigger);
+    }
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLightbox(); });
+
+  lbPrev.addEventListener('click', e=>{
+    e.stopPropagation();
+    lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
+    showItem(lbIndex);
+  });
+  lbNext.addEventListener('click', e=>{
+    e.stopPropagation();
+    lbIndex = (lbIndex + 1) % lbItems.length;
+    showItem(lbIndex);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLightbox();
+    if(e.key==='ArrowLeft'){ lbIndex=(lbIndex-1+lbItems.length)%lbItems.length; showItem(lbIndex); }
+    if(e.key==='ArrowRight'){ lbIndex=(lbIndex+1)%lbItems.length; showItem(lbIndex); }
+  });
+
+  // Touch swipe support
+  let touchStartX=0;
+  lb.addEventListener('touchstart', e=>{ touchStartX=e.changedTouches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx)>50){
+      if(dx<0){ lbIndex=(lbIndex+1)%lbItems.length; }
+      else { lbIndex=(lbIndex-1+lbItems.length)%lbItems.length; }
+      showItem(lbIndex);
+    }
+  });
+
+</script>
+</body>
+</html>
